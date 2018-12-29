@@ -1,0 +1,64 @@
+<div class="jumbotron">
+  
+    <div class="row">
+      <div >
+          <div class="input-group">
+              <form [formGroup]="this.todoservice.form" (ngSubmit)='onSubmit(date)'>
+              <p>
+                  <mat-form-field class="hidden" >
+                      <input matInput   formControlName="$key" />
+                    </mat-form-field>
+                    <mat-form-field class="hidden">
+                        <input matInput   formControlName="done" >
+                      </mat-form-field>
+              </p>
+                <p><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Todo" formControlName="todo"  />
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Due <input type="date" name="due" formControlName="due"/> 
+                <p><mat-form-field class="example-full-width">
+                  <textarea formControlName="notes" matInput placeholder="Leave a note" #notes></textarea>
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                    <button mat-raised-button type="submit" color="primary" >Add</button>
+                  
+                </p>
+              </form>
+              
+            </div>
+      </div>
+      
+      <table class="table table-bordered table-hover" >
+        
+        <thead class="thead-dark">
+          <th scope="col">Done</th>
+          <th scope="col">To-Do</th>
+          <th scope="col">Due</th>
+          <th scope="col">Notes</th>
+          <th scope="col">Edit</th>
+        </thead>
+        <ng-container *ngFor="let todo of listArray">
+            <tr>
+              <td>
+                  <mat-checkbox [(ngModel)]="todo.Done"  (click)='check(todo.$key,todo.Done)'></mat-checkbox>
+              </td>
+                <td>{{todo.Todo}}</td>
+                <td>{{todo.Due}}</td>
+                <td>{{todo.Notes}}</td>
+                <td>
+                  
+  <button mat-fab color="primary" (click)='todoservice.edit(todo)'>Edit</button>
+  <button mat-fab color="warn" (click)='delete(todo)'>Delete</button>
+                  
+                </td>
+              </tr>
+        </ng-container>
+        
+        </table>
+        
+    
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.centOnline {
+    
+    position: absolute;
+    left: 33%;
+  }
+  .centOffline {
+    
+    position: absolute;
+    left: 66%;
+  }
